@@ -1,0 +1,51 @@
+" vimrc file for mike kovacina
+" inspiration from
+"  - https://dougblack.io/words/a-good-vimrc.html
+
+" color scheme that works for me for now
+colorscheme darkblue	
+
+" enable syntax processing
+syntax enable
+
+" number of visual spaces for a tab
+set tabstop=4
+
+" number os spaces in a tab in editing mode
+set softtabstop=4
+
+" leave tabs as tabs
+set noexpandtab
+
+" show line numbers
+set number
+
+" show command in the bottom
+set showcmd
+
+" highlight the current line
+" -- not working on ibook, vim too old
+set cursorline
+
+" load language specific indentation files
+filetype indent on
+
+" visual autocomplete for commands
+set wildmenu
+
+" only redraw when needed
+set lazyredraw
+
+" highlight match ({[
+set showmatch
+
+" search as characters are typed
+set incsearch
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" make jj and jk escape
+inoremap jk <esc>
+inoremap jj <esc>
