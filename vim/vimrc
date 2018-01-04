@@ -4,7 +4,7 @@
 "  - https://raw.github.com/evaryont/dotfiles/master/vimrc
 
 " color scheme that works for me for now
-colorscheme darkblue	
+colorscheme murphy 
 
 " enable syntax processing
 syntax enable
