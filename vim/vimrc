@@ -2,6 +2,12 @@
 " inspiration from
 "  - https://dougblack.io/words/a-good-vimrc.html
 "  - https://raw.github.com/evaryont/dotfiles/master/vimrc
+"  - https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 " color scheme that works for me for now
 colorscheme murphy 
@@ -43,7 +49,9 @@ endif
 filetype indent on
 
 " visual autocomplete for commands
-set wildmenu
+set wildmenu                   " Show completion matches in the status bar
+set wildmode=longest,full      " Expand the longest common match, then all
+set wildignore=*.o,*.obj,*~    " What to ignore in wildmenu
 
 " only redraw when needed
 set lazyredraw
@@ -99,6 +107,14 @@ set enc=utf-8                  " Use UTF-8 encoding
 set fenc=utf-8
 set tenc=utf-8
 set virtualedit+=block         " Block movement can go beyond end-of-line
+
+set spell                      " Enable spell check
+set title                      " Modify the terminal title
+set cursorline                 " Emphasize the current line the cursor is on
+set complete+=k,kspell         " Scan dictionaries for completion as well
+set completeopt=menuone,longest,preview
+set virtualedit+=block         " Block movement can go beyond end-of-line
+
 syntax on " Enable syntax highlighting
 
 " Vim 7.3 only settings.
@@ -116,3 +132,9 @@ filetype indent on
 
 " ignores the ^M when line endings in a file are messed up
 match Ignore /\r$/ 
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
