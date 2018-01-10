@@ -5,6 +5,12 @@
 
 " color scheme that works for me for now
 colorscheme murphy 
+color desert
+set background=dark
+colorscheme evening
+set guifont=Courier_New:h10
+set ignorecase
+
 
 " enable syntax processing
 syntax enable
@@ -14,6 +20,9 @@ set tabstop=4
 
 " number os spaces in a tab in editing mode
 set softtabstop=4
+
+"
+set shiftwidth
 
 " leave tabs as tabs
 set noexpandtab
