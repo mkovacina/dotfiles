@@ -22,7 +22,7 @@ set tabstop=4
 set softtabstop=4
 
 "
-set shiftwidth
+set shiftwidth=8
 
 " leave tabs as tabs
 set noexpandtab
@@ -65,7 +65,7 @@ inoremap jk <esc>
 inoremap jj <esc>
 
 " show row,column coordinates in the status bar
-show ruler
+set ruler
 
 " get backspace to work for windows
 set backspace=2
