@@ -2,21 +2,20 @@
 " inspiration from
 "  - https://dougblack.io/words/a-good-vimrc.html
 "  - https://raw.github.com/evaryont/dotfiles/master/vimrc
-"  - https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+" REM: ':so %'		  -- reload the file that you are editing
+" REM: ':so $MYVIMRC' -- reload your vimrc file
 
 " color scheme that works for me for now
-colorscheme murphy 
-color desert
+if has('gui_running')
+	colorscheme evening
+else
+	colorscheme desert
+endif
+
 set background=dark
-colorscheme evening
 set guifont=Courier_New:h10
 set ignorecase
-
 
 " enable syntax processing
 syntax enable
@@ -28,7 +27,7 @@ set tabstop=4
 set softtabstop=4
 
 "
-set shiftwidth=8
+set shiftwidth=4
 
 " leave tabs as tabs
 set noexpandtab
@@ -108,9 +107,11 @@ set fenc=utf-8
 set tenc=utf-8
 set virtualedit+=block         " Block movement can go beyond end-of-line
 
-set spell                      " Enable spell check
+if has('gui_running')
+	set spell                      " Enable spell check
+endif
+
 set title                      " Modify the terminal title
-set cursorline                 " Emphasize the current line the cursor is on
 set complete+=k,kspell         " Scan dictionaries for completion as well
 set completeopt=menuone,longest,preview
 set virtualedit+=block         " Block movement can go beyond end-of-line
@@ -133,8 +134,167 @@ filetype indent on
 " ignores the ^M when line endings in a file are messed up
 match Ignore /\r$/ 
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" get powershell as the shell
+"  https://stackoverflow.com/questions/94382/vim-with-powershell
+if has("win32") || has("gui_win32") 
+	 if executable("PowerShell") 
+		" Set PowerShell as the shell for running external ! commands 
+		" http://stackoverflow.com/questions/7605917/system-with-powershell-in-vim      
+		set shell=PowerShell 
+	 	set shellcmdflag=-ExecutionPolicy\ RemoteSigned\ -Command 
+	 	set shellquote=\" 
+	 	" shellxquote must be a literal space character. 
+	 	set shellxquote=  
+	endif 
+endif 
+
+" vimrc file for mike kovacina
+" inspiration from
+"  - https://dougblack.io/words/a-good-vimrc.html
+"  - https://raw.github.com/evaryont/dotfiles/master/vimrc
+
+" REM: ':so %'		  -- reload the file that you are editing
+" REM: ':so $MYVIMRC' -- reload your vimrc file
+
+" color scheme that works for me for now
+if has('gui_running')
+	colorscheme evening
+else
+	colorscheme desert
+endif
+
+set background=dark
+set guifont=Courier_New:h10
+set ignorecase
+
+" enable syntax processing
+syntax enable
+
+" number of visual spaces for a tab
+set tabstop=4
+
+" number os spaces in a tab in editing mode
+set softtabstop=4
+
+"
+set shiftwidth=4
+
+" leave tabs as tabs
+set noexpandtab
+
+" show line numbers
+set number
+
+" show command in the bottom
+set showcmd
+
+" highlight the current line
+" -- not working on ibook, vim too old
+if v:version >= 703
+	set cursorline
+endif
+
+" load language specific indentation files
+filetype indent on
+
+" visual autocomplete for commands
+set wildmenu                   " Show completion matches in the status bar
+set wildmode=longest,full      " Expand the longest common match, then all
+set wildignore=*.o,*.obj,*~    " What to ignore in wildmenu
+
+" only redraw when needed
+set lazyredraw
+
+" highlight match ({[
+set showmatch
+
+" search as characters are typed
+set incsearch
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+nnoremap <Up> gk
+nnoremap <Down> gj
+
+" make jj and jk escape
+inoremap jk <esc>
+inoremap jj <esc>
+
+" show row,column coordinates in the status bar
+set ruler
+
+" get backspace to work for windows
+set backspace=2
+
+" don't let words be broken at the end of the screen
+set linebreak
+
+" fix common spelling errors
+iab teh the
+iab taht that
+
+set nocompatible               " Enable vim-only options
+set nowrap                     " Don't wrap lines
+set noerrorbells               " Disable any error bells
+set visualbell                 " Use a visual notification instead of beeping
+set incsearch                  " Jump to the first match in real-time
+set ignorecase                 " Case insensitive search, by default.
+set smartcase                  " Case-sensitive if there any capital letters
+set laststatus=2               " Always show the status bar
+set ruler                      " Always show the position of the cursor
+set showcmd                    " Show incomplete commands in the status bar
+set autoindent                 " Automatically indent the next line
+set cindent                    " Smart automatic indent
+set linebreak                  " Don't wrap in the middle of a word
+set modeline                   " Let individual files specify settings
+set background=dark            " Use dark colors over lighter ones
+set backupdir=~/appdata/local/temp//      " Store backup files in ~/vim/tmp
+set directory=~/appdata/local/temp//      " Store swap files in ~/vim/tmp
+set backspace=indent,eol,start " Smart backspace in insert mode
+set enc=utf-8                  " Use UTF-8 encoding
+set fenc=utf-8
+set tenc=utf-8
+set virtualedit+=block         " Block movement can go beyond end-of-line
+
+if has('gui_running')
+	set spell                      " Enable spell check
+endif
+
+set title                      " Modify the terminal title
+set complete+=k,kspell         " Scan dictionaries for completion as well
+set completeopt=menuone,longest,preview
+set virtualedit+=block         " Block movement can go beyond end-of-line
+
+syntax on " Enable syntax highlighting
+
+" Vim 7.3 only settings.
+if v:version >= 703
+    " undo settings
+    set undodir=~/vim/tmp/
+    set undofile
+endif
+
+" Turn filetype on *now*, with extra ftdetect paths added, so vim actually
+" sees them!
+filetype on
+filetype plugin on
+filetype indent on
+
+" ignores the ^M when line endings in a file are messed up
+match Ignore /\r$/ 
+
+" get powershell as the shell
+"  https://stackoverflow.com/questions/94382/vim-with-powershell
+if has("win32") || has("gui_win32") 
+	 if executable("PowerShell") 
+		" Set PowerShell as the shell for running external ! commands 
+		" http://stackoverflow.com/questions/7605917/system-with-powershell-in-vim      
+		set shell=PowerShell 
+	 	set shellcmdflag=-ExecutionPolicy\ RemoteSigned\ -Command 
+	 	set shellquote=\" 
+	 	" shellxquote must be a literal space character. 
+	 	set shellxquote=  
+	endif 
+endif 
+
