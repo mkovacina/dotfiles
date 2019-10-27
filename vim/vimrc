@@ -7,11 +7,7 @@
 " REM: ':so $MYVIMRC' -- reload your vimrc file
 
 " color scheme that works for me for now
-if has('gui_running')
-	colorscheme evening
-else
-	colorscheme desert
-endif
+colorscheme desert
 
 set background=dark
 set guifont=Courier_New:h10
@@ -125,6 +121,18 @@ set completeopt=menuone,longest,preview
 " Block movement can go beyond end-of-line
 set virtualedit+=block         
 
+" Enable syntax highlighting
+syntax on 
+
+" load language specific indentation files
+filetype indent on
+
+" Turn filetype on *now*, with extra ftdetect paths added, so vim actually
+" sees them!
+filetype on
+filetype plugin on
+filetype indent on
+
 
 
 " highlight the current line
@@ -134,9 +142,6 @@ set virtualedit+=block
 ""endif
 " removing this for now as i can't get the colors to play nice bouncing
 " between the terminal and the gui
-
-" load language specific indentation files
-filetype indent on
 
 
 
@@ -157,12 +162,7 @@ iab teh the
 iab taht that
 
 
-if has('gui_running')
-	set spell                      " Enable spell check
-endif
 
-
-syntax on " Enable syntax highlighting
 
 " Vim 7.3 only settings.
 if v:version >= 703
@@ -170,12 +170,6 @@ if v:version >= 703
     set undodir=~/vim/tmp/
     set undofile
 endif
-
-" Turn filetype on *now*, with extra ftdetect paths added, so vim actually
-" sees them!
-filetype on
-filetype plugin on
-filetype indent on
 
 " ignores the ^M when line endings in a file are messed up
 match Ignore /\r$/ 
