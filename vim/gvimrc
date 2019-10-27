@@ -1,0 +1,23 @@
+" gvimrc file for mike kovacina
+"
+" thanks to this stackoverflow article for the fact that gvimrc
+" loads separately after the vimrc file.
+
+" REM: ':so %'		  -- reload the file that you are editing
+" REM: ':so $MYVIMRC' -- reload your vimrc file
+
+" color scheme that works for me for now
+	colorscheme evening
+
+" highlight the current line
+" -- not working on ibook, vim too old
+if v:version >= 703
+	set cursorline
+endif
+" removing this for now as i can't get the colors to play nice bouncing
+" between the terminal and the gui
+
+if has('gui_running')
+	set spell                      " Enable spell check
+endif
+
