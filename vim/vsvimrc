@@ -1,0 +1,62 @@
+" vsvimrc file for mike kovacina
+"
+" forking from vimrc for now due to a bug in vsvim
+" - https://github.com/VsVim/VsVim/issues/2585
+
+" number of visual spaces for a tab
+set tabstop=4
+
+" number os spaces in a tab in editing mode
+set softtabstop=4
+
+"
+set shiftwidth=4
+
+" leave tabs as tabs
+set noexpandtab
+
+" show command in the bottom
+set showcmd
+
+" get backspace to work for windows
+set backspace=2
+
+" search as characters are typed
+set incsearch
+
+" don't wrap lines
+set nowrap                     " Don't wrap lines
+
+" use a visual notification instead of beeping
+set visualbell                 " Use a visual notification instead of beeping
+
+" case insensitive search, by default
+set ignorecase                 " Case insensitive search, by default.
+
+" case-sensitive search if there are any capital letters
+set smartcase                  " Case-sensitive if there any capital letters
+
+" Always show the status bar
+set laststatus=2               
+
+" Show incomplete commands in the status bar
+" set showcmd                    
+
+" Automatically indent the next line
+set autoindent                 
+
+" Let individual files specify settings
+set modeline                   
+
+" Smart backspace in insert mode
+set backspace=indent,eol,start 
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+nnoremap <Up> gk
+nnoremap <Down> gj
+
+" make jj and jk escape
+inoremap jk <esc>
+inoremap jj <esc>
