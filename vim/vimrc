@@ -10,7 +10,6 @@
 colorscheme desert
 
 set background=dark
-set guifont=Courier_New:h10
 set ignorecase
 
 " enable syntax processing

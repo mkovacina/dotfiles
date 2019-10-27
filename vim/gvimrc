@@ -6,8 +6,11 @@
 " REM: ':so %'		  -- reload the file that you are editing
 " REM: ':so $MYVIMRC' -- reload your vimrc file
 
+" set the font
+set guifont=Courier_New:h10
+
 " color scheme that works for me for now
-	colorscheme evening
+colorscheme evening
 
 " highlight the current line
 " -- not working on ibook, vim too old
