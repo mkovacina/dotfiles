@@ -1,0 +1,187 @@
+" vimrc file for mike kovacina
+" inspiration from
+"  - https://dougblack.io/words/a-good-vimrc.html
+"  - https://raw.github.com/evaryont/dotfiles/master/vimrc
+
+" REM: ':so %'		  -- reload the file that you are editing
+" REM: ':so $MYVIMRC' -- reload your vimrc file
+
+" color scheme that works for me for now
+colorscheme desert
+
+" Use dark colors over lighter ones
+set background=dark            
+
+" enable syntax processing
+syntax enable
+
+" number of visual spaces for a tab
+set tabstop=4
+
+" number of spaces in a tab in editing mode
+set softtabstop=4
+
+"
+set shiftwidth=4
+
+" leave tabs as tabs
+set noexpandtab
+
+" show line numbers
+set number
+
+" show command in the bottom
+set showcmd
+
+" show row,column coordinates in the status bar
+set ruler
+
+" get backspace to work for windows
+set backspace=2
+
+" don't let words be broken at the end of the screen
+set linebreak
+
+" highlight match ({[
+set showmatch
+
+" search as characters are typed
+set incsearch
+
+" enable vim-only options
+set nocompatible
+
+" don't wrap lines
+set nowrap                     " Don't wrap lines
+
+" disable any error bells
+set noerrorbells               " Disable any error bells
+
+" use a visual notification instead of beeping
+set visualbell                 " Use a visual notification instead of beeping
+
+" jump to the first match in real-time
+set incsearch                  " Jump to the first match in real-time
+
+" case insensitive search, by default
+set ignorecase                 " Case insensitive search, by default.
+
+" case-sensitive search if there are any capital letters
+set smartcase                  " Case-sensitive if there any capital letters
+
+" Always show the status bar
+set laststatus=2               
+
+" Always show the position of the cursor
+set ruler                      
+
+" Show incomplete commands in the status bar
+" set showcmd                    
+
+" Automatically indent the next line
+set autoindent                 
+
+" Smart automatic indent
+set cindent                    
+
+" Don't wrap in the middle of a word
+set linebreak                  
+
+" Let individual files specify settings
+set modeline                   
+
+
+" Store backup files in ~/vim/tmp
+set backupdir=~/appdata/local/temp//      
+
+" Store swap files in ~/vim/tmp
+set directory=~/appdata/local/temp//      
+
+" Smart backspace in insert mode
+set backspace=indent,eol,start 
+
+" Block movement can go beyond end-of-line
+set virtualedit+=block         
+
+" Use UTF-8 encoding
+set enc=utf-8                  
+set fenc=utf-8
+set tenc=utf-8
+
+" Modify the terminal title
+set title                      
+
+" Scan dictionaries for completion as well
+set complete+=k,kspell         
+set completeopt=menuone,longest,preview
+
+" Block movement can go beyond end-of-line
+set virtualedit+=block         
+
+" Enable syntax highlighting
+syntax on 
+
+" load language specific indentation files
+filetype indent on
+
+" Turn filetype on *now*, with extra ftdetect paths added, so vim actually
+" sees them!
+filetype on
+filetype plugin on
+filetype indent on
+
+
+
+" highlight the current line
+" -- not working on ibook, vim too old
+""if v:version >= 703
+""	set cursorline
+""endif
+" removing this for now as i can't get the colors to play nice bouncing
+" between the terminal and the gui
+
+
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+nnoremap <Up> gk
+nnoremap <Down> gj
+
+" make jj and jk escape
+inoremap jk <esc>
+inoremap jj <esc>
+
+
+
+" fix common spelling errors
+iab teh the
+iab taht that
+
+
+
+
+" Vim 7.3 only settings.
+if v:version >= 703
+    " undo settings
+    set undodir=~/vim/tmp/
+    set undofile
+endif
+
+" ignores the ^M when line endings in a file are messed up
+match Ignore /\r$/ 
+
+" get powershell as the shell
+"  https://stackoverflow.com/questions/94382/vim-with-powershell
+if has("win32") || has("gui_win32") 
+	 if executable("PowerShell") 
+		" Set PowerShell as the shell for running external ! commands 
+		" http://stackoverflow.com/questions/7605917/system-with-powershell-in-vim      
+		set shell=PowerShell 
+	 	set shellcmdflag=-ExecutionPolicy\ RemoteSigned\ -Command 
+	 	set shellquote=\" 
+	 	" shellxquote must be a literal space character. 
+	 	set shellxquote=  
+	endif 
+endif 
+
