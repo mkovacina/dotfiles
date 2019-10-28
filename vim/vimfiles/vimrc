@@ -6,15 +6,12 @@
 " REM: ':so %'		  -- reload the file that you are editing
 " REM: ':so $MYVIMRC' -- reload your vimrc file
 
-<<<<<<< HEAD
 " enable vim-only options
 set nocompatible
 
 " activate pathogen
 call pathogen#infect()
 
-=======
->>>>>>> 487500ed671716cf2a492128471dae6c751b3783
 " color scheme that works for me for now
 colorscheme desert
 
@@ -57,12 +54,6 @@ set showmatch
 " search as characters are typed
 set incsearch
 
-<<<<<<< HEAD
-=======
-" enable vim-only options
-set nocompatible
-
->>>>>>> 487500ed671716cf2a492128471dae6c751b3783
 " don't wrap lines
 set nowrap                     " Don't wrap lines
 
@@ -101,7 +92,6 @@ set linebreak
 
 " Let individual files specify settings
 set modeline                   
-
 
 " Store backup files in ~/vim/tmp
 set backupdir=~/appdata/local/temp//      
@@ -197,8 +187,10 @@ if has("win32") || has("gui_win32")
 	endif 
 endif 
 
-<<<<<<< HEAD
 " activate the NERDTree when launching vim for any file type
-autocmd vimenter * NERDTree
-=======
->>>>>>> 487500ed671716cf2a492128471dae6c751b3783
+" the wincmd is the "window command" and "p" is the previous window
+" this makes it so that the opened buffer is focused, not nerdtree
+autocmd vimenter * NERDTree | wincmd p
+
+" exit vim if nerdtree is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
