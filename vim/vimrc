@@ -18,7 +18,7 @@ syntax enable
 " number of visual spaces for a tab
 set tabstop=4
 
-" number os spaces in a tab in editing mode
+" number of spaces in a tab in editing mode
 set softtabstop=4
 
 "
