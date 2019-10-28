@@ -9,8 +9,8 @@
 " color scheme that works for me for now
 colorscheme desert
 
-set background=dark
-set ignorecase
+" Use dark colors over lighter ones
+set background=dark            
 
 " enable syntax processing
 syntax enable
@@ -90,8 +90,6 @@ set linebreak
 " Let individual files specify settings
 set modeline                   
 
-" Use dark colors over lighter ones
-set background=dark            
 
 " Store backup files in ~/vim/tmp
 set backupdir=~/appdata/local/temp//      
