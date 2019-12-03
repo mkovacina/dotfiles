@@ -132,18 +132,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-
-
-" highlight the current line
-" -- not working on ibook, vim too old
-""if v:version >= 703
-""	set cursorline
-""endif
-" removing this for now as i can't get the colors to play nice bouncing
-" between the terminal and the gui
-
-
-
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -159,8 +147,6 @@ inoremap jj <esc>
 " fix common spelling errors
 iab teh the
 iab taht that
-
-
 
 
 " Vim 7.3 only settings.
@@ -186,11 +172,3 @@ if has("win32") || has("gui_win32")
 	 	set shellxquote=  
 	endif 
 endif 
-
-" activate the NERDTree when launching vim for any file type
-" the wincmd is the "window command" and "p" is the previous window
-" this makes it so that the opened buffer is focused, not nerdtree
-autocmd vimenter * NERDTree | wincmd p
-
-" exit vim if nerdtree is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
