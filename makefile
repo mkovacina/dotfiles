@@ -3,3 +3,5 @@ all:
 
 install-vim:
 	cp -f vim/vimrc ~/.vimrc	
+	cp -f vim/gvimrc ~/.gvimrc	
+	cp -fr vim/vimfiles ~/.vim 
