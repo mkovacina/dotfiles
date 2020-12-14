@@ -93,11 +93,14 @@ set linebreak
 " Let individual files specify settings
 set modeline                   
 
+" create the directoy....
+silent execute '!mkdir ~/.backup'
+
 " Store backup files in ~/vim/tmp
-set backupdir=~/appdata/local/temp//      
+set backupdir=~/.backup//      
 
 " Store swap files in ~/vim/tmp
-set directory=~/appdata/local/temp//      
+set directory=~/.backup//      
 
 " Smart backspace in insert mode
 set backspace=indent,eol,start 
