@@ -1,0 +1,71 @@
+# references
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
+[credential "http://reload:3000"]
+	provider = generic
+[credential]
+	helper = manager
+[user]
+	name = Mike Kovacina
+	email = kovacina@orbitalresearch.com
+[column]
+	# layout results in a multi-column format
+#	ui = auto
+[branch]
+	# sorts by most recent commit
+	sort = -committerdate
+[tag]
+	# treats dotted version numbers as a series of integer values for sorting purposes 
+	sort = version:refname
+[init]
+	# default branch name for newly created repositories
+	defaultBranch = main
+[diff]
+	# a better diff algorithm
+	algorithm = histogram
+	# more clearly show code that was moved
+	colorMoved = plain
+	# eplace the a/ and b/ in your diff header output with 
+	# where the diff is coming from, so i/ (index), w/ (working directory) or c/ commit.
+	mnemonicPrefix = true
+	# detect if a file has been renamed
+	renames = true
+[push]
+	# push to the same branch name on the remote
+	default = simple
+	# automatically setup the remote if it doesn't exist
+	autoSetupRemote = true
+	# automatically push local tags on a push
+	followTags = true
+[fetch]
+	# delete a local branch if the remote is deleted
+	prune = true
+	# delete local tags if they are deleted on the remote
+	pruneTags = true
+	# fetch everything
+	all = true
+[help]
+	# prompt to fix fat-fingering
+	autocorrect = prompt
+[commit]
+	# show the entire commit diff in the commit message
+	# verbose = true
+[rerere]
+	# remember the before and after states of a rebase conflict
+	enabled = true
+	# automatically apply resolutions that have already been seen
+	autoupdate = true
+[core]
+	# a global gitignore
+	excludesfile = ~/.gitignore
+[rebase]
+	# make rebase and squash easier
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[merge]
+	# show the block before either yours or the other change
+	conflictstyle = zdiff3 
+[pull]
+	# pulling does a rebase by default instead of a merge
+	rebase = true
